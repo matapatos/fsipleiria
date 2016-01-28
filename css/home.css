@@ -1,0 +1,29 @@
+/*
+	Changes: Home Page;
+ */
+
+#welcome-background {
+	background: black;
+}
+
+.welcome-player {
+	position: relative;
+	width: 100%;
+	height: 750px;
+}
+
+.opacity {
+	opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+#welcome-text {
+	z-index: 10;
+	top: 30%;
+	left: 38%;
+	position: absolute;
+	font-size: 550%;
+	color: white;
+	cursor: default;
+}
+

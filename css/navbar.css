@@ -1,0 +1,8 @@
+/*
+	Changes: Navbar
+ */
+
+/*------- ICON ----------*/
+.navbar-brand > img {
+	max-height: 50px;
+}
