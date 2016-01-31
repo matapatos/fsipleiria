@@ -73,7 +73,7 @@ function scMap($atts, $content = null){
 	}
 
 	echo '
-	<div id="map" style="width:100%; height:600px;"></div>
+	<div id="map" style="width:' . $width . '; height:' . $height . ';"></div>
 	<script>
 		function initMap() {
 			var coordinates = {lat: ' . $lat . ' , lng: ' . $lng . '};
@@ -156,4 +156,22 @@ function scSponsors($atts, $content = null){
 	include(locate_template('sections/sponsors.php' ));
 }
 add_shortcode('sponsors', 'scSponsors');
+/**
+ * Function created just for adding a section in the page with a title and a content text.
+ * @param  [array] $atts    - Shortcode parameters:
+  *                          	id_section -> id to be putted on the section;
+  *                          	title -> title of the section.
+ * @param  [string] $content - Content text.
+ * @return [html] - HTML code to render on the browser.
+ */
+function scText($atts, $content = null){
+	extract(shortcode_atts( array(
+	    'id_section' => '',
+	    'title' => ''
+	), $atts ));
+
+	include(locate_template('sections/text.php'));
+}
+add_shortcode('text', 'scText');
+
 ?>

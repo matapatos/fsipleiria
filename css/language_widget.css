@@ -1,0 +1,18 @@
+a.flag{
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+a.flag_others{
+	position: absolute;
+	opacity: 0.2;
+}
+
+.flag_pt{
+	background-image: url(../images/flags/pt.png);
+}
+
+.flag_en{
+	background-image: url(../images/flags/gb.png);
+}

@@ -1,0 +1,17 @@
+.form-control{
+	background-color: #DCDCDC;
+}
+
+.contact-us{
+	background: white;
+}
+
+.notification{
+    margin-top: -42px;
+    display: none;
+}
+
+label.error {
+	color: red;
+	float: left;
+}

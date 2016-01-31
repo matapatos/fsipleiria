@@ -13,7 +13,18 @@ if(!defined('fsipleiria-customizer')){
 	include ('includes/customizer.php');
 }
 
+if(!defined('fsipleiria-language')){
+	define('fsipleiria-language', true);
+	include ('includes/language.php');
+}
 
+if(!defined('contact-us')){
+	define('contact-us', true);
+	include ('includes/contact_us_form.php');
+
+	add_action('wp_ajax_contact_us', 'contactUsAction');
+	add_action('wp_ajax_nopriv_contact_us', 'contactUsAction');
+}
 /*
 	Main function to include CSS files.
  */
@@ -46,7 +57,26 @@ function theme_enqueue_scripts(){
 	wp_enqueue_script('scrollTo' );
 
 	wp_enqueue_script('home-js', get_stylesheet_directory_uri() . '/js/home.js', array('jquery'), false, true);
+
+	wp_register_script('jquery-validate', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js', array('jquery'), false, true);
+	wp_enqueue_script('jquery-validate');
+
+    wp_register_script('contact-us', get_stylesheet_directory_uri() . '/js/contact_us.js', array('jquery', 'jquery-validate'), false, true);
+    wp_localize_script('contact-us', 'myAjax', array( 'url' => admin_url( 'admin-ajax.php' ), 'lang' => getCurrentLang()));	//Initialize 'ajaxurl' variable!
+	wp_enqueue_script('contact-us');
 }
+// add_action('phpmailer_init', 'phpMailerSMTP');
+// function phpMailerSMTP($phpmailer){
+//  	$phpmailer->Host = 'localhost';
+//     $phpmailer->Port = 25; // could be different
+//     // $phpmailer->Username = 'your_username@example.com'; // if required
+//     // $phpmailer->Password = 'yourpassword'; // if required
+//     $phpmailer->SMTPAuth = false; // if required
+//     // $phpmailer->SMTPSecure = 'ssl'; // enable if required, 'tls' is another possible value
+
+//     $phpmailer->IsSMTP();
+// }
+
 
 /**
  * Function created to hide or show the sidebar and the title of each page. (Change the template of all pages to be without the custom wordpress template).
@@ -58,6 +88,5 @@ function changeStateBlankTemplatePages($state){
 }
 
 changeStateBlankTemplatePages(true);
-
 
 ?>

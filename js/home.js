@@ -3,7 +3,9 @@
 
 var $ = jQuery,
     player,
-    firstTimePlay = false;
+    firstTimePlay = false,
+    firstTime = new Date().getTime(),
+    MAX_TIMEOUT = 3000;
 
 /*
   Create <IFRAME> with id #player
@@ -14,9 +16,22 @@ function onYouTubeIframeAPIReady() {
     playerVars: {rel: 0},
     events: {
       'onStateChange': onPlayerStateChange,
-      'onError': onPlayerError
+      'onError': onPlayerError,
+      'onReady': onPlayerReady
     }
   });
+}
+/**
+ * Function created for being the callback of the 'onReady' state of the player.
+ */
+function onPlayerReady(event){
+  var now = new Date().getTime(),
+      total = now - firstTime;
+
+  if(total >= MAX_TIMEOUT){
+    event.target.playVideo();
+  }
+  else setTimeout(event.target.playVideo(), MAX_TIMEOUT - total);
 }
 /*
   Function created to be called when the #player state change. PLAYING, STOP, etc.
@@ -38,7 +53,7 @@ function focusOnPlayer() {
       FADE_OUT_ANIM = 'animated fadeOutDown',
       ANIM_END = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
-  $('#welcome-text').removeClass(FADE_IN_ANIM).addClass(FADE_OUT_ANIM).one(ANIM_END, function(event) {
+  $('#welcome-img').removeClass(FADE_IN_ANIM).addClass(FADE_OUT_ANIM).one(ANIM_END, function(event) {
     $(this)[0].style.display = 'none';
   });
   $('.welcome-player').fadeTo('slow', 1, function() {});
