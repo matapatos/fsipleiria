@@ -1,0 +1,19 @@
+div.text > h1{
+	margin-top: 0;
+}
+
+.text {
+	text-align: left;
+}
+
+section#t14{
+	min-height: 550px;
+}
+
+.width_sixty_percent{
+	width: 60%;
+}
+
+img.image_left {
+	float: left;
+}

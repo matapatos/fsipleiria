@@ -6,7 +6,7 @@
 
 					echo '<div class="section-header">';
 
-						$zerif_testimonials_title = get_theme_mod('zerif_testimonials_title',__('Testimonials','zerif-lite'));
+						$zerif_testimonials_title = get_theme_mod('testimonials_title_' . getCurrentLang(),__('Testimonials','zerif-lite'));
 
 						if( !empty($zerif_testimonials_title) ):
 
@@ -14,7 +14,7 @@
 
 						endif;
 
-						$zerif_testimonials_subtitle = get_theme_mod('zerif_testimonials_subtitle');
+						$zerif_testimonials_subtitle = get_theme_mod('testimonials_subtitle_' . getCurrentLang());
 
 						if( !empty($zerif_testimonials_subtitle) ):
 
@@ -28,13 +28,7 @@
 
 						echo '<div class="col-md-12">';
 
-							$pinterest_style = '';
-							$zerif_testimonials_pinterest_style = get_theme_mod('zerif_testimonials_pinterest_style');
-							if( isset($zerif_testimonials_pinterest_style) && $zerif_testimonials_pinterest_style != 0 ) {
-								$pinterest_style = 'testimonial-masonry';
-							}
-
-							echo '<div id="client-feedbacks" class="owl-carousel owl-theme ' . $pinterest_style . ' ">';
+							echo '<div id="client-feedbacks" class="owl-carousel owl-theme">';
 
 									if(is_active_sidebar( 'sidebar-testimonials' )):
 

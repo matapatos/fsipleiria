@@ -54,7 +54,7 @@ function zerif_customize_register( $wp_customize ) {
 		) );
 
 		$wp_customize->add_section( 'zerif_general_section' , array(
-				'title'       => __( 'General', 'zerif-lite' ),
+				'title'       => __( 'Copyrights', 'zerif-lite' ),
 				'priority'    => 30,
 				'panel' => 'panel_general'
 		));
@@ -66,42 +66,6 @@ function zerif_customize_register( $wp_customize ) {
 				'settings' => 'zerif_logo',
 				'priority'    => 1,
 		)));
-
-		/* Disable preloader */
-		$wp_customize->add_setting( 'zerif_disable_preloader', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-				'zerif_disable_preloader',
-				array(
-					'type' => 'checkbox',
-					'label' => __('Disable preloader?','zerif-lite'),
-					'section' => 'zerif_general_section',
-					'priority'    => 2,
-				)
-		);
-
-		/* Disable smooth scroll */
-		$wp_customize->add_setting( 'zerif_disable_smooth_scroll', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-				'zerif_disable_smooth_scroll',
-				array(
-					'type' 		=> 'checkbox',
-					'label' 	=> __('Disable smooth scroll?','zerif-lite'),
-					'section' 	=> 'zerif_general_section',
-					'priority'	=> 3,
-				)
-		);
-
-		/* Enable accessibility */
-		$wp_customize->add_setting( 'zerif_accessibility', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-				'zerif_accessibility',
-				array(
-					'type' 		=> 'checkbox',
-					'label' 	=> __('Enable accessibility?','zerif-lite'),
-					'section' 	=> 'zerif_general_section',
-					'priority'	=> 3,
-				)
-		);
 
 		/* COPYRIGHT */
 		$wp_customize->add_setting( 'zerif_copyright', array('sanitize_callback' => 'zerif_sanitize_text'));
@@ -243,42 +207,6 @@ function zerif_customize_register( $wp_customize ) {
 				'priority'    => 1,
 		)));
 
-		/* Disable preloader */
-		$wp_customize->add_setting( 'zerif_disable_preloader', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-				'zerif_disable_preloader',
-				array(
-					'type' => 'checkbox',
-					'label' => __('Disable preloader?','zerif-lite'),
-					'section' => 'zerif_general_section',
-					'priority'    => 2,
-				)
-		);
-
-		/* Disable smooth scroll */
-		$wp_customize->add_setting( 'zerif_disable_smooth_scroll', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-				'zerif_disable_smooth_scroll',
-				array(
-					'type' 		=> 'checkbox',
-					'label' 	=> __('Disable smooth scroll?','zerif-lite'),
-					'section' 	=> 'zerif_general_section',
-					'priority'	=> 3,
-				)
-		);
-
-		/* Enable accessibility */
-		$wp_customize->add_setting( 'zerif_accessibility', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-				'zerif_accessibility',
-				array(
-					'type' 		=> 'checkbox',
-					'label' 	=> __('Enable accessibility?','zerif-lite'),
-					'section' 	=> 'zerif_general_section',
-					'priority'	=> 3,
-				)
-		);
-
 		/* COPYRIGHT */
 		$wp_customize->add_setting( 'zerif_copyright', array('sanitize_callback' => 'zerif_sanitize_text'));
 		$wp_customize->add_control( 'zerif_copyright', array(
@@ -392,85 +320,110 @@ function zerif_customize_register( $wp_customize ) {
 	endif;
 
 	/********************************************************************/
-	/*************  FORMULA STUDENT FOCUS SECTION **********************************/
+	/*************  COMPETITION PAGE **********************************/
 	/********************************************************************/
 	if ( class_exists( 'WP_Customize_Panel' ) ):
-		$wp_customize->add_panel( 'panel_ourfocus', array(
+		$wp_customize->add_panel( 'competition_panel', array(
 			'priority' => 32,
 			'capability' => 'edit_theme_options',
 			'theme_supports' => '',
-			'title' => __( 'Formula Student focus section', 'zerif-lite' )
+			'title' => __( 'Competition page', 'zerif-lite' )
 		) );
-		$wp_customize->add_section( 'zerif_ourfocus_section' , array(
-				'title'       => __( 'Content', 'zerif-lite' ),
-				'priority'    => 1,
-				'panel'       => 'panel_ourfocus'
-		));
 		/* show/hide */
-		$wp_customize->add_setting( 'zerif_ourfocus_show', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_ourfocus_show',
-			array(
-				'type' => 'checkbox',
-				'label' => __('Hide Formula Student focus section?','zerif-lite'),
-				'section' => 'zerif_ourfocus_section',
-				'priority'    => 1,
-			)
-		);
-		/* focus title */
-		$wp_customize->add_setting( 'zerif_ourfocus_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('FORMULA STUDENT','zerif-lite')));
-
-			$wp_customize->add_control( 'zerif_ourfocus_title', array(
-					'label'    => __( 'Title', 'zerif-lite' ),
-					'section'  => 'zerif_ourfocus_section',
-					'settings' => 'zerif_ourfocus_title',
-					'priority'    => 2,
+		// $wp_customize->add_setting( 'competition_show', array('sanitize_callback' => 'zerif_sanitize_text'));
+		// $wp_customize->add_control(
+		// 	'competition_show',
+		// 	array(
+		// 		'type' => 'checkbox',
+		// 		'label' => __('Hide competition section?','zerif-lite'),
+		// 		'panel' => 'competition_panel',
+		// 		'priority'    => 1,
+		// 	)
+		// );
+		/* PT section */
+		$wp_customize->add_section( 'competition_section_pt' , array(
+				'title'       => __( 'Portuguese', 'zerif-lite' ),
+				'priority'    => 2,
+				'panel'       => 'competition_panel'
 		));
-		/* focus subtitle */
-		$wp_customize->add_setting( 'zerif_ourfocus_subtitle', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('A project that worth it','zerif-lite')));
-		$wp_customize->add_control( 'zerif_ourfocus_subtitle', array(
-				'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
-				'section'  => 'zerif_ourfocus_section',
-				'settings' => 'zerif_ourfocus_subtitle',
+		/* EN section */
+		$wp_customize->add_section( 'competition_section_en' , array(
+				'title'       => __( 'English', 'zerif-lite' ),
 				'priority'    => 3,
+				'panel'       => 'competition_panel'
+		));
+		/* title EN*/
+		$wp_customize->add_setting( 'competition_title_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'competition_title_en', array(
+				'label'    => __( 'Title', 'zerif-lite' ),
+				'section'  => 'competition_section_en',
+				'settings' => 'competition_title_en',
+				'priority'    => 1,
+		));
+
+		/* content EN*/
+		$wp_customize->add_setting( 'competition_content_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'competition_content_en', array(
+				'label'    => __( 'Content', 'zerif-lite' ),
+				'section'  => 'competition_section_en',
+				'settings' => 'competition_content_en',
+				'priority'    => 2,
+		));
+
+		/* title PT*/
+		$wp_customize->add_setting( 'competition_title_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'competition_title_pt', array(
+				'label'    => __( 'Title', 'zerif-lite' ),
+				'section'  => 'competition_section_pt',
+				'settings' => 'competition_title_pt',
+				'priority'    => 1,
+		));
+
+		/* content PT*/
+		$wp_customize->add_setting( 'competition_content_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'competition_content_pt', array(
+				'label'    => __( 'Content', 'zerif-lite' ),
+				'section'  => 'competition_section_pt',
+				'settings' => 'competition_content_pt',
+				'priority'    => 2,
 		));
 
 	else:
 
-		$wp_customize->add_section( 'zerif_ourfocus_section' , array(
-				'title'       => __( 'Formula Student focus section', 'zerif-lite' ),
-				'priority'    => 32,
+		// $wp_customize->add_section( 'competition_section' , array(
+		// 		'title'       => __( 'Competition page section', 'zerif-lite' ),
+		// 		'priority'    => 32,
 
-				'description' => __( 'The main content of this section is customizable in: Customize -> Widgets -> Formula Student focus section. There you must add the "Zerif - Formula Student focus widget"', 'zerif-lite' )
-		));
-		/* show/hide */
-		$wp_customize->add_setting( 'zerif_ourfocus_show', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_ourfocus_show',
-			array(
-				'type' => 'checkbox',
-				'label' => __('Hide our focus section?','zerif-lite'),
-				'section' => 'zerif_ourfocus_section',
-				'priority'    => 1,
-			)
-		);
-		/* focus title */
-		$wp_customize->add_setting( 'zerif_ourfocus_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('FORMULA STUDENT','zerif-lite')));
+		// 		'description' => __( 'The main content of this section is to customize the Competition page."', 'zerif-lite' )
+		// ));
+		// /* show/hide */
+		// $wp_customize->add_setting( 'competition_show', array('sanitize_callback' => 'zerif_sanitize_text'));
+		// $wp_customize->add_control(
+		// 	'competition_show',
+		// 	array(
+		// 		'type' => 'checkbox',
+		// 		'label' => __('Hide our focus section?','zerif-lite'),
+		// 		'section' => 'competition_section',
+		// 		'priority'    => 1,
+		// 	)
+		// );
+		// /* title */
+		// $wp_customize->add_setting( 'competition_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('FORMULA STUDENT','zerif-lite')));
 
-			$wp_customize->add_control( 'zerif_ourfocus_title', array(
-					'label'    => __( 'Title', 'zerif-lite' ),
-					'section'  => 'zerif_ourfocus_section',
-					'settings' => 'zerif_ourfocus_title',
-					'priority'    => 2,
-		));
-		/* focus subtitle */
-		$wp_customize->add_setting( 'zerif_ourfocus_subtitle', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('A project that worth it.','zerif-lite')));
-		$wp_customize->add_control( 'zerif_ourfocus_subtitle', array(
-				'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
-				'section'  => 'zerif_ourfocus_section',
-				'settings' => 'zerif_ourfocus_subtitle',
-				'priority'    => 3,
-		));
+		// 	$wp_customize->add_control( 'competition_title', array(
+		// 			'label'    => __( 'Title', 'zerif-lite' ),
+		// 			'section'  => 'competition_section',
+		// 			'settings' => 'competition_title',
+		// 			'priority'    => 2,
+		// ));
+		// /* content */
+		// $wp_customize->add_setting( 'competition_content', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('A project that worth it.','zerif-lite')));
+		// $wp_customize->add_control( 'competition_content', array(
+		// 		'label'    => __( 'Our focus subtitle', 'zerif-lite' ),
+		// 		'section'  => 'competition_section',
+		// 		'settings' => 'competition_content',
+		// 		'priority'    => 3,
+		// ));
 	endif;
 
 	/************************************/
@@ -844,190 +797,343 @@ function zerif_customize_register( $wp_customize ) {
 		);
 	endif;
 	/******************************************/
-    /********** TEAM SECTION **************/
+    /********** TEAM PAGE **************/
 	/******************************************/
 	if ( class_exists( 'WP_Customize_Panel' ) ):
 
-		$wp_customize->add_panel( 'panel_ourteam', array(
+		$wp_customize->add_panel( 'panel_team', array(
 			'priority' => 35,
 			'capability' => 'edit_theme_options',
 			'theme_supports' => '',
-			'title' => __( 'Team section', 'zerif-lite' )
+			'title' => __( 'Team page', 'zerif-lite' )
 		) );
-
-		$wp_customize->add_section( 'zerif_ourteam_section' , array(
-				'title'       => __( 'Content', 'zerif-lite' ),
-				'priority'    => 1,
-				'panel'       => 'panel_ourteam'
+		/* PT section */
+		$wp_customize->add_section( 'team_section_pt' , array(
+				'title'       => __( 'Portuguese', 'zerif-lite' ),
+				'priority'    => 2,
+				'panel'       => 'panel_team'
+		));
+		/* EN section */
+		$wp_customize->add_section( 'team_section_en' , array(
+				'title'       => __( 'English', 'zerif-lite' ),
+				'priority'    => 3,
+				'panel'       => 'panel_team'
 		));
 		/* team show/hide */
-		$wp_customize->add_setting( 'zerif_ourteam_show', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_setting( 'fundation_show_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
 		$wp_customize->add_control(
-			'zerif_ourteam_show',
+			'fundation_show_pt',
 			array(
 				'type' => 'checkbox',
-				'label' => __('Hide our team section?','zerif-lite'),
-				'section' => 'zerif_ourteam_section',
+				'label' => __('Hide fundation PT section?','zerif-lite'),
+				'section' => 'team_section_pt',
 				'priority'    => 1,
 			)
 		);
-		/* team title */
-		$wp_customize->add_setting( 'zerif_ourteam_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('TEAM','zerif-lite')));
-		$wp_customize->add_control( 'zerif_ourteam_title', array(
-					'label'    => __( 'Title', 'zerif-lite' ),
-					'section'  => 'zerif_ourteam_section',
-					'settings' => 'zerif_ourteam_title',
+		/* title */
+		$wp_customize->add_setting( 'fundation_title_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'fundation_title_pt', array(
+					'label'    => __( 'Fundation title', 'zerif-lite' ),
+					'section'  => 'team_section_pt',
+					'settings' => 'fundation_title_pt',
 					'priority'    => 2,
 		));
-		/* team subtitle */
-		$wp_customize->add_setting( 'zerif_ourteam_subtitle', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('Prove that you have real people working for you, with some nice looking profile pictures and links to social media.','zerif-lite')));
-		$wp_customize->add_control( 'zerif_ourteam_subtitle', array(
-				'label'    => __( 'Team subtitle', 'zerif-lite' ),
-				'section'  => 'zerif_ourteam_section',
-				'settings' => 'zerif_ourteam_subtitle',
+		/* content */
+		$wp_customize->add_setting( 'fundation_content_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'fundation_content_pt', array(
+				'label'    => __( 'Fundation content', 'zerif-lite' ),
+				'section'  => 'team_section_pt',
+				'settings' => 'fundation_content_pt',
 				'priority'    => 3,
 		));
+		/* team show/hide */
+		$wp_customize->add_setting( 'fundation_show_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'fundation_show_en',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide fundation EN section?','zerif-lite'),
+				'section' => 'team_section_en',
+				'priority'    => 4,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'fundation_title_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'fundation_title_en', array(
+					'label'    => __( 'Fundation title', 'zerif-lite' ),
+					'section'  => 'team_section_en',
+					'settings' => 'fundation_title_en',
+					'priority'    => 5,
+		));
+		/* content */
+		$wp_customize->add_setting( 'fundation_content_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'fundation_content_en', array(
+				'label'    => __( 'Fundation content', 'zerif-lite' ),
+				'section'  => 'team_section_en',
+				'settings' => 'fundation_content_en',
+				'priority'    => 6,
+		));
+
+		/* Who we are */
+		/* team show/hide */
+		$wp_customize->add_setting( 'whoweare_show_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'whoweare_show_pt',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide Whoweare PT section?','zerif-lite'),
+				'section' => 'team_section_pt',
+				'priority'    => 7,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'whoweare_title_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'whoweare_title_pt', array(
+					'label'    => __( 'Whoweare title', 'zerif-lite' ),
+					'section'  => 'team_section_pt',
+					'settings' => 'whoweare_title_pt',
+					'priority'    => 8,
+		));
+		/* content */
+		$wp_customize->add_setting( 'whoweare_content_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'whoweare_content_pt', array(
+				'label'    => __( 'Whoweare content', 'zerif-lite' ),
+				'section'  => 'team_section_pt',
+				'settings' => 'whoweare_content_pt',
+				'priority'    => 9,
+		));
+		/* team show/hide */
+		$wp_customize->add_setting( 'whoweare_show_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'whoweare_show_en',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide Whoweare EN section?','zerif-lite'),
+				'section' => 'team_section_en',
+				'priority'    => 10,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'whoweare_title_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'whoweare_title_en', array(
+					'label'    => __( 'Whoweare title', 'zerif-lite' ),
+					'section'  => 'team_section_en',
+					'settings' => 'whoweare_title_en',
+					'priority'    => 11,
+		));
+		/* content */
+		$wp_customize->add_setting( 'whoweare_content_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'whoweare_content_en', array(
+				'label'    => __( 'Whoweare content', 'zerif-lite' ),
+				'section'  => 'team_section_en',
+				'settings' => 'whoweare_content_en',
+				'priority'    => 12,
+		));
+		/* objectives */
+		/* team show/hide */
+		$wp_customize->add_setting( 'objectives_show_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'objectives_show_pt',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide objectives PT section?','zerif-lite'),
+				'section' => 'team_section_pt',
+				'priority'    => 13,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'objectives_title_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'objectives_title_pt', array(
+					'label'    => __( 'objectives title', 'zerif-lite' ),
+					'section'  => 'team_section_pt',
+					'settings' => 'objectives_title_pt',
+					'priority'    => 14,
+		));
+		/* content */
+		$wp_customize->add_setting( 'objectives_content_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'objectives_content_pt', array(
+				'label'    => __( 'objectives content', 'zerif-lite' ),
+				'section'  => 'team_section_pt',
+				'settings' => 'objectives_content_pt',
+				'priority'    => 15,
+		));
+		/* team show/hide */
+		$wp_customize->add_setting( 'objectives_show_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'objectives_show_en',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide objectives EN section?','zerif-lite'),
+				'section' => 'team_section_en',
+				'priority'    => 16,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'objectives_title_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'objectives_title_en', array(
+					'label'    => __( 'objectives title', 'zerif-lite' ),
+					'section'  => 'team_section_en',
+					'settings' => 'objectives_title_en',
+					'priority'    => 17,
+		));
+		/* content */
+		$wp_customize->add_setting( 'objectives_content_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'objectives_content_en', array(
+				'label'    => __( 'objectives content', 'zerif-lite' ),
+				'section'  => 'team_section_en',
+				'settings' => 'objectives_content_en',
+				'priority'    => 18,
+		));
+		/* Palmares */
+		/* team show/hide */
+		$wp_customize->add_setting( 'palmares_show_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'palmares_show_pt',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide Palmares PT section?','zerif-lite'),
+				'section' => 'team_section_pt',
+				'priority'    => 19,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'palmares_title_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'palmares_title_pt', array(
+					'label'    => __( 'Palmares title', 'zerif-lite' ),
+					'section'  => 'team_section_pt',
+					'settings' => 'palmares_title_pt',
+					'priority'    => 20,
+		));
+		/* content */
+		$wp_customize->add_setting( 'palmares_content_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'palmares_content_pt', array(
+				'label'    => __( 'Palmares content', 'zerif-lite' ),
+				'section'  => 'team_section_pt',
+				'settings' => 'palmares_content_pt',
+				'priority'    => 21,
+		));
+		/* team show/hide */
+		$wp_customize->add_setting( 'palmares_show_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'palmares_show_en',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide Palmares EN section?','zerif-lite'),
+				'section' => 'team_section_en',
+				'priority'    => 22,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'palmares_title_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'palmares_title_en', array(
+					'label'    => __( 'Palmares title', 'zerif-lite' ),
+					'section'  => 'team_section_en',
+					'settings' => 'palmares_title_en',
+					'priority'    => 23,
+		));
+		/* content */
+		$wp_customize->add_setting( 'palmares_content_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'palmares_content_en', array(
+				'label'    => __( 'Palmares content', 'zerif-lite' ),
+				'section'  => 'team_section_en',
+				'settings' => 'palmares_content_en',
+				'priority'    => 24,
+		));
+		/* Testimonials */
+		/* team show/hide */
+		$wp_customize->add_setting( 'testimonials_show_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'testimonials_show_pt',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide Testimonials EN section?','zerif-lite'),
+				'section' => 'team_section_pt',
+				'priority'    => 22,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'testimonials_title_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'testimonials_title_pt', array(
+					'label'    => __( 'Testimonials title', 'zerif-lite' ),
+					'section'  => 'team_section_pt',
+					'settings' => 'testimonials_title_pt',
+					'priority'    => 23,
+		));
+		/* subtitle */
+		$wp_customize->add_setting( 'testimonials_subtitle_pt', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'testimonials_subtitle_pt', array(
+				'label'    => __( 'Testimonials content', 'zerif-lite' ),
+				'section'  => 'team_section_pt',
+				'settings' => 'testimonials_subtitle_pt',
+				'priority'    => 24,
+		));
+		/* team show/hide */
+		$wp_customize->add_setting( 'testimonials_show_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control(
+			'testimonials_show_en',
+			array(
+				'type' => 'checkbox',
+				'label' => __('Hide Testimonials EN section?','zerif-lite'),
+				'section' => 'team_section_en',
+				'priority'    => 22,
+			)
+		);
+		/* title */
+		$wp_customize->add_setting( 'testimonials_title_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'testimonials_title_en', array(
+					'label'    => __( 'Testimonials title', 'zerif-lite' ),
+					'section'  => 'team_section_en',
+					'settings' => 'testimonials_title_en',
+					'priority'    => 23,
+		));
+		/* subtitle */
+		$wp_customize->add_setting( 'testimonials_subtitle_en', array('sanitize_callback' => 'zerif_sanitize_text'));
+		$wp_customize->add_control( 'testimonials_subtitle_en', array(
+				'label'    => __( 'Testimonials content', 'zerif-lite' ),
+				'section'  => 'team_section_en',
+				'settings' => 'testimonials_subtitle_en',
+				'priority'    => 24,
+		));
+
 
 	else:
 
-		$wp_customize->add_section( 'zerif_ourteam_section' , array(
-				'title'       => __( 'Team section', 'zerif-lite' ),
-				'priority'    => 35,
+		// $wp_customize->add_section( 'zerif_ourteam_section' , array(
+		// 		'title'       => __( 'Team section', 'zerif-lite' ),
+		// 		'priority'    => 35,
 
-				'description' => __( 'The main content of this section is customizable in: Customize -> Widgets -> Team section. There you must add the "Zerif - Team member widget"', 'zerif-lite' )
-		));
-		/* team show/hide */
-		$wp_customize->add_setting( 'zerif_ourteam_show', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_ourteam_show',
-			array(
-				'type' => 'checkbox',
-				'label' => __('Hide our team section?','zerif-lite'),
-				'section' => 'zerif_ourteam_section',
-				'priority'    => 1,
-			)
-		);
-		/* team title */
-		$wp_customize->add_setting( 'zerif_ourteam_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('TEAM','zerif-lite')));
-		$wp_customize->add_control( 'zerif_ourteam_title', array(
-					'label'    => __( 'Title', 'zerif-lite' ),
-					'section'  => 'zerif_ourteam_section',
-					'settings' => 'zerif_ourteam_title',
-					'priority'    => 2,
-		));
-		/* team subtitle */
-		$wp_customize->add_setting( 'zerif_ourteam_subtitle', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('Prove that you have real people working for you, with some nice looking profile pictures and links to social media.','zerif-lite')));
-		$wp_customize->add_control( 'zerif_ourteam_subtitle', array(
-				'label'    => __( 'Team subtitle', 'zerif-lite' ),
-				'section'  => 'zerif_ourteam_section',
-				'settings' => 'zerif_ourteam_subtitle',
-				'priority'    => 3,
-		));
-
-	endif;
-	/**********************************************/
-    /**********	TESTIMONIALS SECTION **************/
-	/**********************************************/
-	if ( class_exists( 'WP_Customize_Panel' ) ):
-
-		$wp_customize->add_panel( 'panel_testimonials', array(
-			'priority' => 36,
-			'capability' => 'edit_theme_options',
-			'theme_supports' => '',
-			'title' => __( 'Testimonials section', 'zerif-lite' )
-		) );
-
-		$wp_customize->add_section( 'zerif_testimonials_section' , array(
-				'title'       => __( 'Testimonials section', 'zerif-lite' ),
-				'priority'    => 1,
-				'panel'       => 'panel_testimonials'
-		));
-		/* testimonials show/hide */
-		$wp_customize->add_setting( 'zerif_testimonials_show', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_testimonials_show',
-			array(
-				'type' => 'checkbox',
-				'label' => __('Hide testimonials section?','zerif-lite'),
-				'section' => 'zerif_testimonials_section',
-				'priority'    => 1,
-			)
-		);
-		/* testimonial pinterest layout */
-		$wp_customize->add_setting( 'zerif_testimonials_pinterest_style', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_testimonials_pinterest_style',
-			array(
-				'type' 			=> 'checkbox',
-				'label' 		=> __('Use pinterest layout?','zerif-lite'),
-				'section' 		=> 'zerif_testimonials_section',
-				'priority'    	=> 2,
-			)
-		);
-		/* testimonials title */
-		$wp_customize->add_setting( 'zerif_testimonials_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('Testimonials','zerif-lite')));
-		$wp_customize->add_control( 'zerif_testimonials_title', array(
-					'label'    => __( 'Title', 'zerif-lite' ),
-					'section'  => 'zerif_testimonials_section',
-					'settings' => 'zerif_testimonials_title',
-					'priority'    => 2,
-		));
-		/* testimonials subtitle */
-		$wp_customize->add_setting( 'zerif_testimonials_subtitle', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control( 'zerif_testimonials_subtitle', array(
-				'label'    => __( 'Testimonials subtitle', 'zerif-lite' ),
-				'section'  => 'zerif_testimonials_section',
-				'settings' => 'zerif_testimonials_subtitle',
-				'priority'    => 3,
-		));
-
-	else:
-
-		$wp_customize->add_section( 'zerif_testimonials_section' , array(
-				'title'       => __( 'Testimonials section', 'zerif-lite' ),
-				'priority'    => 36,
-				'description' => __( 'The main content of this section is customizable in: Customize -> Widgets -> Testimonials section. There you must add the "Zerif - Testimonial widget"', 'zerif-lite' )
-		));
-		/* testimonials show/hide */
-		$wp_customize->add_setting( 'zerif_testimonials_show', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_testimonials_show',
-			array(
-				'type' => 'checkbox',
-				'label' => __('Hide testimonials section?','zerif-lite'),
-				'section' => 'zerif_testimonials_section',
-				'priority'    => 1,
-			)
-		);
-		/* testimonial pinterest layout */
-		$wp_customize->add_setting( 'zerif_testimonials_pinterest_style', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control(
-			'zerif_testimonials_pinterest_style',
-			array(
-				'type' 			=> 'checkbox',
-				'label' 		=> __('Use pinterest layout?','zerif-lite'),
-				'section' 		=> 'zerif_testimonials_section',
-				'priority'    	=> 2,
-			)
-		);
-		/* testimonials title */
-		$wp_customize->add_setting( 'zerif_testimonials_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('Testimonials','zerif-lite')));
-		$wp_customize->add_control( 'zerif_testimonials_title', array(
-					'label'    => __( 'Title', 'zerif-lite' ),
-					'section'  => 'zerif_testimonials_section',
-					'settings' => 'zerif_testimonials_title',
-					'priority'    => 2,
-		));
-		/* testimonials subtitle */
-		$wp_customize->add_setting( 'zerif_testimonials_subtitle', array('sanitize_callback' => 'zerif_sanitize_text'));
-		$wp_customize->add_control( 'zerif_testimonials_subtitle', array(
-				'label'    => __( 'Testimonials subtitle', 'zerif-lite' ),
-				'section'  => 'zerif_testimonials_section',
-				'settings' => 'zerif_testimonials_subtitle',
-				'priority'    => 3,
-		));
+		// 		'description' => __( 'The main content of this section is customizable in: Customize -> Widgets -> Team section. There you must add the "Zerif - Team member widget"', 'zerif-lite' )
+		// ));
+		// /* team show/hide */
+		// $wp_customize->add_setting( 'zerif_ourteam_show', array('sanitize_callback' => 'zerif_sanitize_text'));
+		// $wp_customize->add_control(
+		// 	'zerif_ourteam_show',
+		// 	array(
+		// 		'type' => 'checkbox',
+		// 		'label' => __('Hide our team section?','zerif-lite'),
+		// 		'section' => 'zerif_ourteam_section',
+		// 		'priority'    => 1,
+		// 	)
+		// );
+		// /* team title */
+		// $wp_customize->add_setting( 'zerif_ourteam_title', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('TEAM','zerif-lite')));
+		// $wp_customize->add_control( 'zerif_ourteam_title', array(
+		// 			'label'    => __( 'Title', 'zerif-lite' ),
+		// 			'section'  => 'zerif_ourteam_section',
+		// 			'settings' => 'zerif_ourteam_title',
+		// 			'priority'    => 2,
+		// ));
+		// /* team subtitle */
+		// $wp_customize->add_setting( 'zerif_ourteam_subtitle', array('sanitize_callback' => 'zerif_sanitize_text','default' => __('Prove that you have real people working for you, with some nice looking profile pictures and links to social media.','zerif-lite')));
+		// $wp_customize->add_control( 'zerif_ourteam_subtitle', array(
+		// 		'label'    => __( 'Team subtitle', 'zerif-lite' ),
+		// 		'section'  => 'zerif_ourteam_section',
+		// 		'settings' => 'zerif_ourteam_subtitle',
+		// 		'priority'    => 3,
+		// ));
 
 	endif;
+
 
 	/**********************************************/
     /**********	LATEST NEWS SECTION **************/

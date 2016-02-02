@@ -101,7 +101,10 @@ add_shortcode( 'map', 'scMap' );
  * @return [html] - HTML code to render on the browser.
  */
 function scTestimonials(){
-	include(locate_template('sections/testimonials.php' ));
+	$hide = get_theme_mod('testimonials_show_' . getCurrentLang(), false);
+
+	if(!$hide)
+		include(locate_template('sections/testimonials.php' ));
 }
 add_shortcode( 'testimonials', 'scTestimonials' );
 
@@ -122,13 +125,13 @@ function scFocus_Section(){
 }
 add_shortcode('focus-section', 'scFocus_Section' );
 /**
- * Function created for showing the template competitions (sections/competitions.php).
+ * Function created for showing the template car (sections/car.php).
  * @return [html] - HTML code to render on the browser.
  */
-function scCompetitions(){
-	include(locate_template('sections/competitions.php' ));
+function scCar(){
+	include(locate_template('sections/car.php' ));
 }
-add_shortcode('competitions', 'scCompetitions' );
+add_shortcode('car', 'scCar' );
 /**
  * Function created for showing the template thanks (sections/thanks.php).
  * @return [html] - HTML code to render on the browser.
@@ -167,10 +170,20 @@ add_shortcode('sponsors', 'scSponsors');
 function scText($atts, $content = null){
 	extract(shortcode_atts( array(
 	    'id_section' => '',
-	    'title' => ''
+	    'title' => '',
+	    'img_left' => ''
 	), $atts ));
 
-	include(locate_template('sections/text.php'));
+	$hide = get_theme_mod($id_section . '_show_' . getCurrentLang(), false);
+
+	if(!$hide){
+		if(!$title)
+			$title = get_theme_mod($id_section . '_title_' . getCurrentLang(), '');
+		if(!$content)
+			$content = get_theme_mod($id_section . '_content_' . getCurrentLang(), '');
+
+		include(locate_template('sections/text.php'));
+	}
 }
 add_shortcode('text', 'scText');
 
